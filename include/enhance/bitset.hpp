@@ -32,15 +32,20 @@ namespace enhance
         bitset(const std::string& binary_string)
         {
             auto length = binary_string.size();
+            int bit = 0;
             for (int i = 0; i < length; i++)
             {
                 char c = binary_string[(length - 1) - i];
+                if (c == '_')
+                    continue;
+
                 if (c == '1')
-                    set(i, 1);
+                    set(bit, 1);
                 else if (c == '0')
-                    set(i, 0);
+                    set(bit, 0);
                 else
                     throw std::runtime_error("Invalid char value, bit strings can only have '0' or '1' char values");
+                bit++;
             }
         }
 
